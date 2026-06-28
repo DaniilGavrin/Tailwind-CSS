@@ -54,6 +54,35 @@ markdown_extensions:
 
 nav:
   - Главная: index.md
+  - Основы:
+    - Введение: basics/introduction.md
+    - Установка: basics/installation.md
+    - Конфигурация: basics/configuration.md
+    - Утилитарные классы: basics/utility-classes.md
+  - Макет:
+    - Flexbox: layout/flexbox.md
+    - Grid: layout/grid.md
+    - Отступы: layout/spacing.md
+    - Размеры: layout/sizing.md
+  - Стили:
+    - Цвета: styling/colors.md
+    - Типографика: styling/typography.md
+    - Фоны: styling/backgrounds.md
+    - Границы: styling/borders.md
+    - Эффекты: styling/effects.md
+  - Адаптивность:
+    - Breakpoints: responsive/breakpoints.md
+    - Dark Mode: responsive/dark-mode.md
+    - Состояния: responsive/states.md
+  - Продвинутое:
+    - Кастомизация: advanced/customization.md
+    - Плагины: advanced/plugins.md
+    - Директивы: advanced/directives.md
+    - Оптимизация: advanced/optimization.md
+  - Интеграции:
+    - React: integrations/react.md
+    - Vue: integrations/vue.md
+    - Next.js: integrations/nextjs.md
 
 extra:
   social:
