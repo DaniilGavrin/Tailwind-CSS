@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Сжиматель Tailwind CSS Guide v2 — АГРЕССИВНЫЙ РЕЖИМ
-Цель: 355 → 60-70 страниц
+Сжиматель Tailwind CSS Guide v5 — ХИРУРГИЧЕСКИЙ
+Удаляет ТОЛЬКО указанные блоки, всё остальное оставляет нетронутым.
 """
 
 import re
@@ -9,106 +9,37 @@ import sys
 from pathlib import Path
 from dataclasses import dataclass, field
 from typing import List
-from dataclasses import dataclass
 
-
-# ═══════════════════════════════════════════════════════════
-# КОНФИГУРАЦИЯ
-# ═══════════════════════════════════════════════════════════
-
-@dataclass
-class CompressionConfig:
-    # УДАЛИТЬ ЦЕЛИКОМ (H1 разделы)
-    remove_sections: List[str] = field(default_factory=lambda: [
-        r'Интеграции',
-        r'Integrations',
-        r'React \+ Tailwind',
-        r'Vue \+ Tailwind',
-        r'Next\.js \+ Tailwind',
-        r'Vue \+ Tailwind CSS',
-        r'React \+ Tailwind CSS',
-        r'Next\.js \+ Tailwind CSS',
-    ])
-    
-    # Подсекции-паразиты (удаляем H2/H3)
-    remove_subsections: List[str] = field(default_factory=lambda: [
-        r'Что вы узнаете',
-        r'Что дальше',
-        r'Следующий шаг',
-        r'Для кого этот гайд',
-        r'Как использовать этот гайд',
-        r'Вклад в проект',
-        r'Лицензия',
-        r'Структура документации',
-        r'История создания',
-        r'Сравнение с традиционным CSS',
-        r'Tailwind vs',
-        r'Когда использовать Tailwind',
-        r'Checklist',
-        r'Checklist перед деплоем',
-        r'Практические паттерны',      # ← 50% объёма!
-        r'Что изучить дальше',
-        r'Performance метрики',
-        r'Анализ размера бандла',
-        r'Проверка через',
-        r'Интеграция с популярными',
-        r'Основные концепции',
-        r'Лучшие практики',
-        r'Почему это работает',
-        r'Доступность',
-        r'WCAG',
-    ])
-    
-    # Оставляем ТОЛЬКО это
-    keep_subsections: List[str] = field(default_factory=lambda: [
-        r'Шпаргалка',
-        r'Частые ошибки',
-        r'Структура',
-        r'Секция',
-        r'Типовые конфигурации',
-    ])
-    
-    # АГРЕССИВНЫЕ лимиты
-    max_code_lines: int = 6
-    max_paragraph_chars: int = 150
-    keep_exercises: bool = False
-
-
-# ═══════════════════════════════════════════════════════════
-# БЛОК
-# ═══════════════════════════════════════════════════════════
 
 @dataclass
 class Block:
-    type: str          # 'h1', 'h2', 'h3', 'h4', 'p', 'code', 'table', 'list', 'hr', 'comment', 'quote'
+    type: str  # 'h1','h2','h3','h4','p','code','table','list','hr','comment','quote'
     content: str
     level: int = 0
     lang: str = ''
 
 
 # ═══════════════════════════════════════════════════════════
-# ПАРСЕР MARKDOWN
+# ПАРСЕР
 # ═══════════════════════════════════════════════════════════
 
 def parse_markdown(text: str) -> List[Block]:
-    """Разбивает Markdown на структурированные блоки"""
     blocks: List[Block] = []
     lines = text.split('\n')
     i = 0
-    
     while i < len(lines):
         line = lines[i]
         
         # HTML-комментарии
         if line.strip().startswith('<!--'):
-            comment_lines = [line]
+            buf = [line]
             while i < len(lines) and '-->' not in lines[i]:
                 i += 1
                 if i < len(lines):
-                    comment_lines.append(lines[i])
+                    buf.append(lines[i])
             if i < len(lines) and '-->' in lines[i]:
                 i += 1
-            blocks.append(Block('comment', '\n'.join(comment_lines)))
+            blocks.append(Block('comment', '\n'.join(buf)))
             continue
         
         # Заголовки
@@ -119,20 +50,20 @@ def parse_markdown(text: str) -> List[Block]:
             i += 1
             continue
         
-        # Блоки кода
+        # Код
         if line.strip().startswith('```'):
             lang = line.strip()[3:].strip()
-            code_lines = []
+            buf = []
             i += 1
             while i < len(lines) and not lines[i].strip().startswith('```'):
-                code_lines.append(lines[i])
+                buf.append(lines[i])
                 i += 1
-            blocks.append(Block('code', '\n'.join(code_lines), lang=lang))
+            blocks.append(Block('code', '\n'.join(buf), lang=lang))
             if i < len(lines):
-                i += 1  # пропустить закрывающие ```
+                i += 1
             continue
         
-        # Горизонтальная линия
+        # HR
         if re.match(r'^---+\s*$', line.strip()):
             blocks.append(Block('hr', line))
             i += 1
@@ -140,35 +71,35 @@ def parse_markdown(text: str) -> List[Block]:
         
         # Таблицы
         if '|' in line and i + 1 < len(lines) and re.match(r'^\s*\|?\s*[-:]+', lines[i + 1]):
-            table_lines = [line]
+            buf = [line]
             i += 1
             while i < len(lines) and '|' in lines[i]:
-                table_lines.append(lines[i])
+                buf.append(lines[i])
                 i += 1
-            blocks.append(Block('table', '\n'.join(table_lines)))
+            blocks.append(Block('table', '\n'.join(buf)))
             continue
         
         # Списки
         if re.match(r'^\s*[-*+]\s+', line) or re.match(r'^\s*\d+\.\s+', line):
-            list_lines = [line]
+            buf = [line]
             i += 1
             while i < len(lines) and (
-                re.match(r'^\s+[-*+\d]', lines[i]) or 
+                re.match(r'^\s+[-*+\d]', lines[i]) or
                 (lines[i].strip() and lines[i].startswith('  '))
             ):
-                list_lines.append(lines[i])
+                buf.append(lines[i])
                 i += 1
-            blocks.append(Block('list', '\n'.join(list_lines)))
+            blocks.append(Block('list', '\n'.join(buf)))
             continue
         
         # Цитаты
         if line.startswith('>'):
-            quote_lines = [line]
+            buf = [line]
             i += 1
             while i < len(lines) and lines[i].startswith('>'):
-                quote_lines.append(lines[i])
+                buf.append(lines[i])
                 i += 1
-            blocks.append(Block('quote', '\n'.join(quote_lines)))
+            blocks.append(Block('quote', '\n'.join(buf)))
             continue
         
         # Пустая строка
@@ -176,13 +107,13 @@ def parse_markdown(text: str) -> List[Block]:
             i += 1
             continue
         
-        # Обычный абзац
-        para_lines = [line]
+        # Абзац
+        buf = [line]
         i += 1
         while i < len(lines) and lines[i].strip() and not lines[i].startswith(('#', '```', '>', '-', '*', '|')) and not re.match(r'^\s*\d+\.', lines[i]) and not re.match(r'^---+\s*$', lines[i]):
-            para_lines.append(lines[i])
+            buf.append(lines[i])
             i += 1
-        blocks.append(Block('p', '\n'.join(para_lines)))
+        blocks.append(Block('p', '\n'.join(buf)))
     
     return blocks
 
@@ -191,86 +122,120 @@ def parse_markdown(text: str) -> List[Block]:
 # ФИЛЬТРЫ
 # ═══════════════════════════════════════════════════════════
 
-def matches_any(text: str, patterns: List[str]) -> bool:
-    for p in patterns:
-        if re.search(p, text, re.IGNORECASE):
-            return True
-    return False
+def is_removable_h1(title: str) -> bool:
+    """H1, которые удаляем целиком (Integrations и всё что после)"""
+    return bool(re.search(r'Integrations|Интеграции', title, re.IGNORECASE))
 
 
-def compress_code_block(block: Block, max_lines: int) -> Block:
-    lines = block.content.split('\n')
-    if len(lines) <= max_lines:
-        return block
-    # Оставляем начало и конец
-    head = lines[:max_lines // 2]
-    tail = lines[-(max_lines // 2):]
-    compressed = head + [f'# ... (ещё {len(lines) - max_lines} строк) ...'] + tail
-    return Block('code', '\n'.join(compressed), level=0, lang=block.lang)
+def is_removable_h2(title: str) -> bool:
+    """H2, которые удаляем целиком (всё содержимое до следующего H2/H1)"""
+    patterns = [
+        r'Для кого',
+        r'Структура документации',
+        r'Что вы узнаете',
+        r'Что дальше',
+        r'Следующий шаг',
+        r'Следующий раздел',
+        r'Следующая секция',
+        r'Частые ошибки',
+        r'Что такое',
+        r'Как использовать',
+        r'Для кого этот',
+        r'Checklist',
+    ]
+    return any(re.search(p, title, re.IGNORECASE) for p in patterns)
 
 
-def is_html_example(block: Block) -> bool:
-    """Проверяет, является ли блок кода большим HTML-примером"""
-    if block.type != 'code':
+def is_removable_h3(title: str) -> bool:
+    """H3, которые удаляем целиком"""
+    patterns = [
+        r'Что вы узнаете',
+        r'Что дальше',
+        r'Следующий шаг',
+        r'Частые ошибки',
+    ]
+    return any(re.search(p, title, re.IGNORECASE) for p in patterns)
+
+
+def is_exercise(block: Block) -> bool:
+    """Блоки с упражнениями 💬"""
+    return '💬' in block.content and ('Упражнение' in block.content or 'упражнение' in block.content)
+
+
+def is_intro_quote(block: Block) -> bool:
+    """Описательные цитаты типа '> **Полное руководство по...**'"""
+    if block.type != 'quote':
         return False
-    if block.lang.lower() not in ('html', 'vue', 'jsx', 'tsx'):
+    # Цитаты-описания в начале разделов
+    return bool(re.search(r'\*\*(Полное руководство|Руководство|Обзор)', block.content))
+
+
+def is_next_step_paragraph(block: Block) -> bool:
+    """Абзацы со ссылками на следующий шаг"""
+    if block.type != 'p':
         return False
-    lines = block.content.split('\n')
-    # Если больше 10 строк HTML — это паттерн, режем
-    return len(lines) > 10
+    return bool(re.search(r'Следующий шаг|Следующий раздел|Следующая секция|Что дальше', block.content, re.IGNORECASE))
 
 
 # ═══════════════════════════════════════════════════════════
-# ГЛАВНЫЙ КОМПРЕССОР
+# ГЛАВНЫЙ ФИЛЬТР
 # ═══════════════════════════════════════════════════════════
 
-def compress_document(blocks: List[Block], cfg: CompressionConfig) -> List[Block]:
+def filter_blocks(blocks: List[Block]) -> List[Block]:
     result: List[Block] = []
-    skip_until_h1 = False
-    skip_until_h2 = False
+    skip_level = 0  # 0 = не пропускаем, иначе уровень заголовка, до которого пропускаем
+    in_integrations = False  # флаг: внутри раздела Integrations
     
     i = 0
     while i < len(blocks):
         block = blocks[i]
         
-        # ─── H1: удаление целых разделов ───
+        # ─── H1: проверяем Integrations ───
         if block.type == 'h1':
-            if matches_any(block.content, cfg.remove_sections):
-                skip_until_h1 = True
+            if is_removable_h1(block.content):
+                in_integrations = True
                 i += 1
                 continue
             else:
-                skip_until_h1 = False
+                in_integrations = False
+                skip_level = 0
                 result.append(block)
                 i += 1
                 continue
         
-        if skip_until_h1:
+        # Если в Integrations — пропускаем всё
+        if in_integrations:
             i += 1
             continue
         
-        # ─── H2/H3: проверка подсекций ───
-        if block.type in ('h2', 'h3'):
-            if matches_any(block.content, cfg.keep_subsections):
-                skip_until_h2 = False
-                result.append(block)
+        # ─── Если мы в режиме пропуска секции ───
+        if skip_level > 0:
+            # Проверяем, не встретился ли заголовок того же или более высокого уровня
+            if block.type in ('h1', 'h2', 'h3', 'h4'):
+                if block.level <= skip_level:
+                    skip_level = 0
+                    # Не увеличиваем i — обработаем этот заголовок
+                    continue
+            i += 1
+            continue
+        
+        # ─── H2: проверяем удаляемые секции ───
+        if block.type == 'h2':
+            if is_removable_h2(block.content):
+                skip_level = 2  # пропускаем всё до следующего H2 или H1
                 i += 1
                 continue
-            
-            if matches_any(block.content, cfg.remove_subsections):
-                skip_until_h2 = True
-                i += 1
-                continue
-            
-            skip_until_h2 = False
             result.append(block)
             i += 1
             continue
         
-        if skip_until_h2:
-            if block.type in ('h1', 'h2', 'h3'):
-                skip_until_h2 = False
+        # ─── H3: проверяем удаляемые ───
+        if block.type == 'h3':
+            if is_removable_h3(block.content):
+                skip_level = 3  # пропускаем до следующего H3/H2/H1
+                i += 1
                 continue
+            result.append(block)
             i += 1
             continue
         
@@ -279,48 +244,22 @@ def compress_document(blocks: List[Block], cfg: CompressionConfig) -> List[Block
             i += 1
             continue
         
-        # ─── Блоки кода ───
-        if block.type == 'code':
-            # Удаляем большие HTML-примеры целиком
-            if is_html_example(block):
-                i += 1
-                continue
-            compressed = compress_code_block(block, cfg.max_code_lines)
-            if compressed.content.strip():
-                result.append(compressed)
+        # ─── Упражнения ───
+        if is_exercise(block):
             i += 1
             continue
         
-        # ─── Абзацы ───
-        if block.type == 'p':
-            # Вырезаем упражнения/вопросы/примечания
-            if any(x in block.content for x in ['💬 **Упражнение', '💬 **Вопрос', 
-                                                  '> 💡', '> ⚠️', '> 📚']):
-                i += 1
-                continue
-            # Длинные абзацы = вода
-            if len(block.content) > cfg.max_paragraph_chars:
-                i += 1
-                continue
-            result.append(block)
+        # ─── Описательные цитаты в начале разделов ───
+        if is_intro_quote(block):
             i += 1
             continue
         
-        # ─── Списки — только короткие ───
-        if block.type == 'list':
-            if len(block.content) < 300:
-                result.append(block)
+        # ─── Абзацы "Следующий шаг" ───
+        if is_next_step_paragraph(block):
             i += 1
             continue
         
-        # ─── Цитаты — только короткие ───
-        if block.type == 'quote':
-            if len(block.content) < 200:
-                result.append(block)
-            i += 1
-            continue
-        
-        # ─── Таблицы — оставляем все ───
+        # ─── Всё остальное оставляем ───
         result.append(block)
         i += 1
     
@@ -328,7 +267,7 @@ def compress_document(blocks: List[Block], cfg: CompressionConfig) -> List[Block
 
 
 # ═══════════════════════════════════════════════════════════
-# СБОРКА MARKDOWN
+# СБОРКА
 # ═══════════════════════════════════════════════════════════
 
 def blocks_to_markdown(blocks: List[Block]) -> str:
@@ -366,11 +305,11 @@ def print_stats(original: str, compressed: str):
     comp_pages = comp_chars / 2500
     
     print('\n' + '═' * 60)
-    print('📊 СТАТИСТИКА СЖАТИЯ (v2 — АГРЕССИВ)')
+    print('📊 СТАТИСТИКА (v5 — ХИРУРГИЧЕСКИЙ)')
     print('═' * 60)
     print(f'  Оригинал:  {orig_chars:>10,} символов  |  {orig_lines:>6,} строк  |  ~{orig_pages:.0f} стр.')
-    print(f'  Сжатый:    {comp_chars:>10,} символов  |  {comp_lines:>6,} строк  |  ~{comp_pages:.0f} стр.')
-    print(f'  Сжатие:    {(1 - comp_chars/orig_chars)*100:>9.1f}%')
+    print(f'  Результат: {comp_chars:>10,} символов  |  {comp_lines:>6,} строк  |  ~{comp_pages:.0f} стр.')
+    print(f'  Удалено:   {(1 - comp_chars/orig_chars)*100:>9.1f}%')
     print(f'  Коэф.:     {orig_chars/comp_chars:>9.1f}x')
     print('═' * 60 + '\n')
 
@@ -398,13 +337,12 @@ def main():
     blocks = parse_markdown(original)
     print(f'   Найдено блоков: {len(blocks)}')
     
-    print('⚙️  Сжимаю (агрессивный режим)...')
-    cfg = CompressionConfig()
-    compressed_blocks = compress_document(blocks, cfg)
-    print(f'   Осталось блоков: {len(compressed_blocks)}')
+    print('🔪 Хирургическое удаление...')
+    filtered = filter_blocks(blocks)
+    print(f'   Осталось блоков: {len(filtered)}')
     
     print('📝 Собираю Markdown...')
-    compressed = blocks_to_markdown(compressed_blocks)
+    compressed = blocks_to_markdown(filtered)
     
     print(f'💾 Сохраняю: {output_path}')
     output_path.write_text(compressed, encoding='utf-8')
