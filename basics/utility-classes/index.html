@@ -1,0 +1,4251 @@
+
+<!doctype html>
+<html lang="ru" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Полное руководство по Tailwind CSS для фронтенд-разработчиков">
+      
+      
+        <meta name="author" content="DaniilGavrin">
+      
+      
+      
+        <link rel="prev" href="../configuration/">
+      
+      
+        <link rel="next" href="../../layout/flexbox/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Утилитарные классы - Tailwind CSS Guide</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="cyan">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Перейти к содержанию
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Верхний колонтитул">
+    <a href="../.." title="Tailwind CSS Guide" class="md-header__button md-logo" aria-label="Tailwind CSS Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Tailwind CSS Guide
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Утилитарные классы
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="cyan" data-md-color-accent="cyan"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="cyan" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Поиск" placeholder="Поиск" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Поиск">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Очистить" aria-label="Очистить" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Инициализация поиска
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/DaniilGavrin/tailwind-css-guide" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DaniilGavrin/tailwind-css-guide
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Вкладки" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Главная
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../introduction/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Основы
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../layout/flexbox/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Макет
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../styling/colors/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Стили
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../responsive/breakpoints/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Адаптивность
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../advanced/customization/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Продвинутое
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../integrations/react/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Интеграции
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Навигация" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Tailwind CSS Guide" class="md-nav__button md-logo" aria-label="Tailwind CSS Guide" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Tailwind CSS Guide
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/DaniilGavrin/tailwind-css-guide" title="Перейти к репозиторию" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    DaniilGavrin/tailwind-css-guide
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Главная
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Основы
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Основы
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Введение
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Установка
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Конфигурация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Утилитарные классы
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Утилитарные классы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Содержание">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Содержание
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Что вы узнаете
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Что такое утилитарный класс?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧠 Что такое утилитарный класс?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Анатомия утилитарного класса
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Паттерны именования
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📂 Категории утилит
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📂 Категории утилит">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-layout" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🏗️ 1. Layout (Макет)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🏗️ 1. Layout (Макет)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#display" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Display
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#position" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Position
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#z-index" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Z-Index
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-spacing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📏 2. Spacing (Отступы)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📏 2. Spacing (Отступы)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#padding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Padding (внутренний отступ)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#margin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Margin (внешний отступ)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Space (отступы между элементами)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Значения размеров
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-sizing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📐 3. Sizing (Размеры)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📐 3. Sizing (Размеры)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#width" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Width
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#height" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Height
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minmax" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Min/Max
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aspect-ratio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aspect Ratio
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-typography" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔤 4. Typography (Типографика)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔤 4. Typography (Типографика)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#font-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Font Size
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#font-weight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Font Weight
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Alignment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-decoration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Decoration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#line-height" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Line Height
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#letter-spacing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Letter Spacing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-transform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Transform
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#text-overflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Text Overflow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#font-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Font Family
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-colors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 5. Colors (Цвета)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 5. Colors (Цвета)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Применение цвета
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Палитра
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Прозрачность
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-backgrounds" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖼️ 6. Backgrounds (Фоны)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-borders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔲 7. Borders (Границы)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔲 7. Borders (Границы)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ширина
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Отдельные стороны
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Скругление
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ring
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divide" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Divide
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-effects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✨ 8. Effects (Эффекты)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="✨ 8. Effects (Эффекты)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#box-shadow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Box Shadow
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#opacity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Opacity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blur" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Blur
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Фильтры
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backdrop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Backdrop
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mix-blend-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mix Blend Mode
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-flexbox" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📐 9. Flexbox
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-grid" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔲 10. Grid
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-interactivity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 11. Interactivity (Интерактивность)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 11. Interactivity (Интерактивность)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cursor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cursor
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-select" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        User Select
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pointer-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pointer Events
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resize" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resize
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appearance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appearance
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-transitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 12. Transitions (Переходы)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 12. Transitions (Переходы)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#transition-property" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transition Property
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#easing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Easing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#13-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔄 13. Transforms (Трансформации)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔄 13. Transforms (Трансформации)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Scale (масштаб)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotate (поворот)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#translate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Translate (смещение)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#origin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Origin (точка трансформации)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🖱️ 14. Модификаторы состояний
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🖱️ 14. Модификаторы состояний">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responsive-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsive-модификаторы
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Тема
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎨 Пример: сборка компонента из утилит
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎨 Пример: сборка компонента из утилит">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Карточка товара
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Какие категории утилит использованы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🗺️ Карта документации
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📊 Шпаргалка: самые используемые классы
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Шпаргалка: самые используемые классы">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Топ-20 классов, которые вы будете использовать постоянно
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚫 Частые ошибки
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚫 Частые ошибки">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Ошибка 1: Поиск «волшебного» класса
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Ошибка 2: Слишком много классов в одном элементе
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Ошибка 3: Забывают, что классы комбинируются
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Ошибка 4: Изобретение своих имён вместо утилит
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ❌ Ошибка 5: Забывают про модификаторы
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🎯 Что дальше?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Что дальше?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Что вы изучили в секции Basics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Следующий шаг
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Макет
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Макет
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../layout/flexbox/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flexbox
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../layout/grid/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grid
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../layout/spacing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Отступы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../layout/sizing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Размеры
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Стили
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Стили
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../styling/colors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Цвета
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../styling/typography/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Типографика
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../styling/backgrounds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Фоны
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../styling/borders/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Границы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../styling/effects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Эффекты
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Адаптивность
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Адаптивность
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../responsive/breakpoints/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Breakpoints
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../responsive/dark-mode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dark Mode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../responsive/states/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Состояния
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Продвинутое
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Продвинутое
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/customization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Кастомизация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/plugins/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Плагины
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/directives/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Директивы
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced/optimization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Оптимизация
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Интеграции
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Интеграции
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/react/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    React
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/vue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vue
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../integrations/nextjs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next.js
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="_1">🎨 Утилитарные классы<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p><strong>Обзор всех категорий утилитарных классов Tailwind CSS:</strong> от макета и типографики до эффектов и интерактивности. Этот раздел — карта, которая поможет ориентироваться в 50 000+ классах Tailwind.</p>
+</blockquote>
+<h2 id="_2">🎯 Что вы узнаете<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>После прочтения этого раздела вы:</p>
+<ul>
+<li>✅ Поймёте, что такое утилитарный класс и как он устроен</li>
+<li>✅ Узнаете все основные категории утилит</li>
+<li>✅ Получите обзор самых используемых классов в каждой категории</li>
+<li>✅ Поймёте паттерны именования классов</li>
+<li>✅ Научитесь быстро находить нужный класс</li>
+<li>✅ Узнаете, где искать детали по каждой теме</li>
+</ul>
+<h2 id="_3">🧠 Что такое утилитарный класс?<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p><strong>Утилитарный класс</strong> — это маленький CSS-класс, который делает <strong>одну конкретную вещь</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="cm">&lt;!-- Каждый класс = одно CSS-свойство --&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-blue-500 p-4 rounded-lg text-white font-bold&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>  <span class="cm">&lt;!-- bg-blue-500 → background-color: #3b82f6 --&gt;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  <span class="cm">&lt;!-- p-4 → padding: 1rem --&gt;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  <span class="cm">&lt;!-- rounded-lg → border-radius: 0.5rem --&gt;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  <span class="cm">&lt;!-- text-white → color: #ffffff --&gt;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>  <span class="cm">&lt;!-- font-bold → font-weight: 700 --&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="_4">Анатомия утилитарного класса<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>[модификатор:]утилита-значение
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>Примеры:
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>  bg-blue-500          → утилита: bg, значение: blue-500
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  p-4                  → утилита: p, значение: 4
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  hover:bg-blue-600    → модификатор: hover, утилита: bg, значение: blue-600
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  md:text-lg           → модификатор: md, утилита: text, значение: lg
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>  dark:bg-gray-900     → модификатор: dark, утилита: bg, значение: gray-900
+</code></pre></div>
+<h3 id="_5">Паттерны именования<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Паттерн</th>
+<th style="text-align: left;">Пример</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>{свойство}-{значение}</code></td>
+<td style="text-align: left;"><code>bg-blue-500</code></td>
+<td style="text-align: left;"><code>background-color: #3b82f6</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{свойство}-{сторона}-{значение}</code></td>
+<td style="text-align: left;"><code>pt-4</code></td>
+<td style="text-align: left;"><code>padding-top: 1rem</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{свойство}-{ось}-{значение}</code></td>
+<td style="text-align: left;"><code>px-4</code></td>
+<td style="text-align: left;"><code>padding-left: 1rem; padding-right: 1rem</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{свойство}-{размер}</code></td>
+<td style="text-align: left;"><code>text-lg</code></td>
+<td style="text-align: left;"><code>font-size: 1.125rem</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>{модификатор}:{утилита}</code></td>
+<td style="text-align: left;"><code>hover:bg-blue-600</code></td>
+<td style="text-align: left;"><code>:hover { background-color: #2563eb }</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_6">📂 Категории утилит<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>Tailwind делит утилиты на <strong>основные категории</strong>. Ниже — обзор каждой с самыми важными классами.</p>
+<hr />
+<h3 id="1-layout">🏗️ 1. Layout (Макет)<a class="headerlink" href="#1-layout" title="Permanent link">&para;</a></h3>
+<p>Управляют расположением элементов на странице.</p>
+<h4 id="display">Display<a class="headerlink" href="#display" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+<th style="text-align: left;">Когда использовать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>block</code></td>
+<td style="text-align: left;"><code>display: block</code></td>
+<td style="text-align: left;">Блочные элементы</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>inline-block</code></td>
+<td style="text-align: left;"><code>display: inline-block</code></td>
+<td style="text-align: left;">Инлайновый блок</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>inline</code></td>
+<td style="text-align: left;"><code>display: inline</code></td>
+<td style="text-align: left;">Инлайновые элементы</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flex</code></td>
+<td style="text-align: left;"><code>display: flex</code></td>
+<td style="text-align: left;">Flexbox-контейнер</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>inline-flex</code></td>
+<td style="text-align: left;"><code>display: inline-flex</code></td>
+<td style="text-align: left;">Инлайновый flex</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grid</code></td>
+<td style="text-align: left;"><code>display: grid</code></td>
+<td style="text-align: left;">Grid-контейнер</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hidden</code></td>
+<td style="text-align: left;"><code>display: none</code></td>
+<td style="text-align: left;">Скрыть элемент</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>contents</code></td>
+<td style="text-align: left;"><code>display: contents</code></td>
+<td style="text-align: left;">«Прозрачный» контейнер</td>
+</tr>
+</tbody>
+</table>
+<h4 id="position">Position<a class="headerlink" href="#position" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+<th style="text-align: left;">Когда использовать</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>static</code></td>
+<td style="text-align: left;"><code>position: static</code></td>
+<td style="text-align: left;">По умолчанию</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>relative</code></td>
+<td style="text-align: left;"><code>position: relative</code></td>
+<td style="text-align: left;">Позиционирование относительно себя</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>absolute</code></td>
+<td style="text-align: left;"><code>position: absolute</code></td>
+<td style="text-align: left;">Позиционирование относительно родителя</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fixed</code></td>
+<td style="text-align: left;"><code>position: fixed</code></td>
+<td style="text-align: left;">Фиксированным на экране</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sticky</code></td>
+<td style="text-align: left;"><code>position: sticky</code></td>
+<td style="text-align: left;">Прилипает при прокрутке</td>
+</tr>
+</tbody>
+</table>
+<h4 id="z-index">Z-Index<a class="headerlink" href="#z-index" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>z-0</code></td>
+<td style="text-align: left;"><code>z-index: 0</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>z-10</code></td>
+<td style="text-align: left;"><code>z-index: 10</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>z-20</code></td>
+<td style="text-align: left;"><code>z-index: 20</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>z-30</code></td>
+<td style="text-align: left;"><code>z-index: 30</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>z-40</code></td>
+<td style="text-align: left;"><code>z-index: 40</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>z-50</code></td>
+<td style="text-align: left;"><code>z-index: 50</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>z-auto</code></td>
+<td style="text-align: left;"><code>z-index: auto</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../layout/flexbox/">Flexbox</a>, <a href="../../layout/grid/">Grid</a></p>
+</blockquote>
+<hr />
+<h3 id="2-spacing">📏 2. Spacing (Отступы)<a class="headerlink" href="#2-spacing" title="Permanent link">&para;</a></h3>
+<p>Управляют внутренними и внешними отступами.</p>
+<h4 id="padding">Padding (внутренний отступ)<a class="headerlink" href="#padding" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>p-{size}</code></td>
+<td style="text-align: left;">padding со всех сторон</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>px-{size}</code></td>
+<td style="text-align: left;">padding по горизонтали</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>py-{size}</code></td>
+<td style="text-align: left;">padding по вертикали</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pt-{size}</code></td>
+<td style="text-align: left;">padding сверху</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pb-{size}</code></td>
+<td style="text-align: left;">padding снизу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pl-{size}</code></td>
+<td style="text-align: left;">padding слева</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>pr-{size}</code></td>
+<td style="text-align: left;">padding справа</td>
+</tr>
+</tbody>
+</table>
+<h4 id="margin">Margin (внешний отступ)<a class="headerlink" href="#margin" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>m-{size}</code></td>
+<td style="text-align: left;">margin со всех сторон</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mx-{size}</code></td>
+<td style="text-align: left;">margin по горизонтали</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>my-{size}</code></td>
+<td style="text-align: left;">margin по вертикали</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>mx-auto</code></td>
+<td style="text-align: left;">центрирование блока</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>-m-{size}</code></td>
+<td style="text-align: left;">отрицательный margin</td>
+</tr>
+</tbody>
+</table>
+<h4 id="space">Space (отступы между элементами)<a class="headerlink" href="#space" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>space-x-{size}</code></td>
+<td style="text-align: left;">отступы по горизонтали</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>space-y-{size}</code></td>
+<td style="text-align: left;">отступы по вертикали</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_7">Значения размеров<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<p><code>0</code>, <code>px</code>, <code>0.5</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>8</code>, <code>10</code>, <code>12</code>, <code>16</code>, <code>20</code>, <code>24</code>, <code>32</code>, <code>40</code>, <code>48</code>, <code>56</code>, <code>64</code>, <code>96</code></p>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../layout/spacing/">Отступы</a></p>
+</blockquote>
+<hr />
+<h3 id="3-sizing">📐 3. Sizing (Размеры)<a class="headerlink" href="#3-sizing" title="Permanent link">&para;</a></h3>
+<p>Управляют шириной и высотой элементов.</p>
+<h4 id="width">Width<a class="headerlink" href="#width" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>w-{size}</code></td>
+<td style="text-align: left;">фиксированная ширина</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>w-full</code></td>
+<td style="text-align: left;"><code>width: 100%</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>w-screen</code></td>
+<td style="text-align: left;"><code>width: 100vw</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>w-1/2</code></td>
+<td style="text-align: left;"><code>width: 50%</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>w-1/3</code></td>
+<td style="text-align: left;"><code>width: 33.333%</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>w-fit</code></td>
+<td style="text-align: left;"><code>width: fit-content</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>w-min</code></td>
+<td style="text-align: left;"><code>width: min-content</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>w-max</code></td>
+<td style="text-align: left;"><code>width: max-content</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="height">Height<a class="headerlink" href="#height" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>h-{size}</code></td>
+<td style="text-align: left;">фиксированная высота</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>h-full</code></td>
+<td style="text-align: left;"><code>height: 100%</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>h-screen</code></td>
+<td style="text-align: left;"><code>height: 100vh</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>h-dvh</code></td>
+<td style="text-align: left;"><code>height: 100dvh</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>h-1/2</code></td>
+<td style="text-align: left;"><code>height: 50%</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="minmax">Min/Max<a class="headerlink" href="#minmax" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>min-w-{size}</code></td>
+<td style="text-align: left;">минимальная ширина</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>max-w-{size}</code></td>
+<td style="text-align: left;">максимальная ширина</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>max-w-prose</code></td>
+<td style="text-align: left;"><code>max-width: 65ch</code> (для текста)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>min-h-screen</code></td>
+<td style="text-align: left;"><code>min-height: 100vh</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>max-h-{size}</code></td>
+<td style="text-align: left;">максимальная высота</td>
+</tr>
+</tbody>
+</table>
+<h4 id="aspect-ratio">Aspect Ratio<a class="headerlink" href="#aspect-ratio" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>aspect-auto</code></td>
+<td style="text-align: left;">по содержимому</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>aspect-square</code></td>
+<td style="text-align: left;"><code>1 / 1</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>aspect-video</code></td>
+<td style="text-align: left;"><code>16 / 9</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>aspect-[4/3]</code></td>
+<td style="text-align: left;">кастомный</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../layout/sizing/">Размеры</a></p>
+</blockquote>
+<hr />
+<h3 id="4-typography">🔤 4. Typography (Типографика)<a class="headerlink" href="#4-typography" title="Permanent link">&para;</a></h3>
+<p>Управляют внешним видом текста.</p>
+<h4 id="font-size">Font Size<a class="headerlink" href="#font-size" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">Размер</th>
+<th style="text-align: left;">Применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>text-xs</code></td>
+<td style="text-align: left;">12px</td>
+<td style="text-align: left;">Подписи, бейджи</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-sm</code></td>
+<td style="text-align: left;">14px</td>
+<td style="text-align: left;">Второстепенный текст</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-base</code></td>
+<td style="text-align: left;">16px</td>
+<td style="text-align: left;">Основной текст</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-lg</code></td>
+<td style="text-align: left;">18px</td>
+<td style="text-align: left;">Подзаголовки</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-xl</code></td>
+<td style="text-align: left;">20px</td>
+<td style="text-align: left;">Заголовки разделов</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-2xl</code></td>
+<td style="text-align: left;">24px</td>
+<td style="text-align: left;">Подзаголовки страниц</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-3xl</code></td>
+<td style="text-align: left;">30px</td>
+<td style="text-align: left;">Заголовки страниц</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-4xl</code></td>
+<td style="text-align: left;">36px</td>
+<td style="text-align: left;">Большие заголовки</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-5xl</code></td>
+<td style="text-align: left;">48px</td>
+<td style="text-align: left;">Hero-заголовки</td>
+</tr>
+</tbody>
+</table>
+<h4 id="font-weight">Font Weight<a class="headerlink" href="#font-weight" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>font-light</code></td>
+<td style="text-align: left;">300</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>font-normal</code></td>
+<td style="text-align: left;">400</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>font-medium</code></td>
+<td style="text-align: left;">500</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>font-semibold</code></td>
+<td style="text-align: left;">600</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>font-bold</code></td>
+<td style="text-align: left;">700</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>font-extrabold</code></td>
+<td style="text-align: left;">800</td>
+</tr>
+</tbody>
+</table>
+<h4 id="text-alignment">Text Alignment<a class="headerlink" href="#text-alignment" title="Permanent link">&para;</a></h4>
+<p><code>text-left</code>, <code>text-center</code>, <code>text-right</code>, <code>text-justify</code></p>
+<h4 id="text-decoration">Text Decoration<a class="headerlink" href="#text-decoration" title="Permanent link">&para;</a></h4>
+<p><code>underline</code>, <code>line-through</code>, <code>no-underline</code>, <code>overline</code></p>
+<h4 id="line-height">Line Height<a class="headerlink" href="#line-height" title="Permanent link">&para;</a></h4>
+<p><code>leading-none</code>, <code>leading-tight</code>, <code>leading-normal</code>, <code>leading-relaxed</code>, <code>leading-loose</code></p>
+<h4 id="letter-spacing">Letter Spacing<a class="headerlink" href="#letter-spacing" title="Permanent link">&para;</a></h4>
+<p><code>tracking-tight</code>, <code>tracking-normal</code>, <code>tracking-wide</code>, <code>tracking-wider</code></p>
+<h4 id="text-transform">Text Transform<a class="headerlink" href="#text-transform" title="Permanent link">&para;</a></h4>
+<p><code>uppercase</code>, <code>lowercase</code>, <code>capitalize</code>, <code>normal-case</code></p>
+<h4 id="text-overflow">Text Overflow<a class="headerlink" href="#text-overflow" title="Permanent link">&para;</a></h4>
+<p><code>truncate</code> (обрезка с многоточием), <code>line-clamp-{n}</code> (многострочная обрезка)</p>
+<h4 id="font-family">Font Family<a class="headerlink" href="#font-family" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">Применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>font-sans</code></td>
+<td style="text-align: left;">Основной текст</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>font-serif</code></td>
+<td style="text-align: left;">Статьи, книги</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>font-mono</code></td>
+<td style="text-align: left;">Код, технические данные</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../styling/typography/">Типографика</a></p>
+</blockquote>
+<hr />
+<h3 id="5-colors">🎨 5. Colors (Цвета)<a class="headerlink" href="#5-colors" title="Permanent link">&para;</a></h3>
+<p>Управляют цветом текста, фона, границ и других свойств.</p>
+<h4 id="_8">Применение цвета<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">Что окрашивает</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>text-{color}</code></td>
+<td style="text-align: left;">Цвет текста</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bg-{color}</code></td>
+<td style="text-align: left;">Цвет фона</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>border-{color}</code></td>
+<td style="text-align: left;">Цвет границы</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>ring-{color}</code></td>
+<td style="text-align: left;">Цвет ring-обводки</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>divide-{color}</code></td>
+<td style="text-align: left;">Цвет разделителей</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>accent-{color}</code></td>
+<td style="text-align: left;">Цвет чекбоксов/радио</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>fill-{color}</code></td>
+<td style="text-align: left;">Цвет SVG fill</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>stroke-{color}</code></td>
+<td style="text-align: left;">Цвет SVG stroke</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_9">Палитра<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>22 цвета: <code>red</code>, <code>orange</code>, <code>amber</code>, <code>yellow</code>, <code>lime</code>, <code>green</code>, <code>emerald</code>, <code>teal</code>, <code>cyan</code>, <code>sky</code>, <code>blue</code>, <code>indigo</code>, <code>violet</code>, <code>purple</code>, <code>fuchsia</code>, <code>pink</code>, <code>rose</code>, <code>slate</code>, <code>gray</code>, <code>zinc</code>, <code>neutral</code>, <code>stone</code></p>
+<p>Каждый имеет 11 оттенков: <code>50</code>, <code>100</code>, <code>200</code>, <code>300</code>, <code>400</code>, <code>500</code>, <code>600</code>, <code>700</code>, <code>800</code>, <code>900</code>, <code>950</code></p>
+<h4 id="_10">Прозрачность<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-blue-500/50&quot;</span><span class="p">&gt;</span>50% прозрачности<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-gray-900/80&quot;</span><span class="p">&gt;</span>80% непрозрачности<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</code></pre></div>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../styling/colors/">Цвета</a></p>
+</blockquote>
+<hr />
+<h3 id="6-backgrounds">🖼️ 6. Backgrounds (Фоны)<a class="headerlink" href="#6-backgrounds" title="Permanent link">&para;</a></h3>
+<p>Управляют фоновыми изображениями, градиентами и эффектами.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>bg-{color}</code></td>
+<td style="text-align: left;">Цвет фона</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bg-[url('...')]</code></td>
+<td style="text-align: left;">Фоновое изображение</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bg-cover</code></td>
+<td style="text-align: left;">Изображение заполняет контейнер</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bg-contain</code></td>
+<td style="text-align: left;">Изображение целиком</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bg-center</code></td>
+<td style="text-align: left;">Центрирование фона</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bg-no-repeat</code></td>
+<td style="text-align: left;">Без повторения</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bg-fixed</code></td>
+<td style="text-align: left;">Фиксированный фон (параллакс)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>bg-gradient-to-{dir}</code></td>
+<td style="text-align: left;">Линейный градиент</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../styling/backgrounds/">Фоны</a></p>
+</blockquote>
+<hr />
+<h3 id="7-borders">🔲 7. Borders (Границы)<a class="headerlink" href="#7-borders" title="Permanent link">&para;</a></h3>
+<p>Управляют границами, скруглениями и обводками.</p>
+<h4 id="_11">Ширина<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p><code>border</code>, <code>border-0</code>, <code>border-2</code>, <code>border-4</code>, <code>border-8</code></p>
+<h4 id="_12">Отдельные стороны<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p><code>border-t</code>, <code>border-r</code>, <code>border-b</code>, <code>border-l</code>, <code>border-x</code>, <code>border-y</code></p>
+<h4 id="_13">Скругление<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">Радиус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>rounded-none</code></td>
+<td style="text-align: left;">0px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rounded-sm</code></td>
+<td style="text-align: left;">2px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rounded</code></td>
+<td style="text-align: left;">4px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rounded-md</code></td>
+<td style="text-align: left;">6px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rounded-lg</code></td>
+<td style="text-align: left;">8px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rounded-xl</code></td>
+<td style="text-align: left;">12px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rounded-2xl</code></td>
+<td style="text-align: left;">16px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rounded-3xl</code></td>
+<td style="text-align: left;">24px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rounded-full</code></td>
+<td style="text-align: left;">9999px (круг)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="ring">Ring<a class="headerlink" href="#ring" title="Permanent link">&para;</a></h4>
+<p><code>ring-1</code>, <code>ring-2</code>, <code>ring</code>, <code>ring-4</code>, <code>ring-8</code>, <code>ring-offset-{size}</code></p>
+<h4 id="divide">Divide<a class="headerlink" href="#divide" title="Permanent link">&para;</a></h4>
+<p><code>divide-x</code>, <code>divide-y</code>, <code>divide-{color}</code>, <code>divide-dashed</code></p>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../styling/borders/">Границы</a></p>
+</blockquote>
+<hr />
+<h3 id="8-effects">✨ 8. Effects (Эффекты)<a class="headerlink" href="#8-effects" title="Permanent link">&para;</a></h3>
+<p>Управляют тенями, прозрачностью и фильтрами.</p>
+<h4 id="box-shadow">Box Shadow<a class="headerlink" href="#box-shadow" title="Permanent link">&para;</a></h4>
+<p><code>shadow-sm</code>, <code>shadow</code>, <code>shadow-md</code>, <code>shadow-lg</code>, <code>shadow-xl</code>, <code>shadow-2xl</code>, <code>shadow-inner</code>, <code>shadow-none</code></p>
+<h4 id="opacity">Opacity<a class="headerlink" href="#opacity" title="Permanent link">&para;</a></h4>
+<p><code>opacity-0</code>, <code>opacity-25</code>, <code>opacity-50</code>, <code>opacity-75</code>, <code>opacity-100</code></p>
+<h4 id="blur">Blur<a class="headerlink" href="#blur" title="Permanent link">&para;</a></h4>
+<p><code>blur-sm</code>, <code>blur</code>, <code>blur-md</code>, <code>blur-lg</code>, <code>blur-xl</code>, <code>blur-2xl</code>, <code>blur-3xl</code></p>
+<h4 id="_14">Фильтры<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">Эффект</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>brightness-{value}</code></td>
+<td style="text-align: left;">Яркость</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>contrast-{value}</code></td>
+<td style="text-align: left;">Контрастность</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grayscale</code></td>
+<td style="text-align: left;">Оттенки серого</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>sepia</code></td>
+<td style="text-align: left;">Сепия</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hue-rotate-{angle}</code></td>
+<td style="text-align: left;">Поворот тона</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>saturate-{value}</code></td>
+<td style="text-align: left;">Насыщенность</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>invert</code></td>
+<td style="text-align: left;">Инверсия</td>
+</tr>
+</tbody>
+</table>
+<h4 id="backdrop">Backdrop<a class="headerlink" href="#backdrop" title="Permanent link">&para;</a></h4>
+<p><code>backdrop-blur-{size}</code>, <code>backdrop-brightness-{value}</code></p>
+<h4 id="mix-blend-mode">Mix Blend Mode<a class="headerlink" href="#mix-blend-mode" title="Permanent link">&para;</a></h4>
+<p><code>mix-blend-multiply</code>, <code>mix-blend-screen</code>, <code>mix-blend-overlay</code></p>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../styling/effects/">Эффекты</a></p>
+</blockquote>
+<hr />
+<h3 id="9-flexbox">📐 9. Flexbox<a class="headerlink" href="#9-flexbox" title="Permanent link">&para;</a></h3>
+<p>Управляют flexbox-раскладкой.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>flex</code></td>
+<td style="text-align: left;"><code>display: flex</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flex-row</code></td>
+<td style="text-align: left;">горизонтальное направление</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flex-col</code></td>
+<td style="text-align: left;">вертикальное направление</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flex-wrap</code></td>
+<td style="text-align: left;">перенос элементов</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>items-center</code></td>
+<td style="text-align: left;">вертикальное центрирование</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>items-start</code></td>
+<td style="text-align: left;">выравнивание по верху</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>items-end</code></td>
+<td style="text-align: left;">выравнивание по низу</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>justify-center</code></td>
+<td style="text-align: left;">горизонтальное центрирование</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>justify-between</code></td>
+<td style="text-align: left;">распределение по краям</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>justify-around</code></td>
+<td style="text-align: left;">равные промежутки вокруг</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>justify-evenly</code></td>
+<td style="text-align: left;">равные промежутки</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flex-1</code></td>
+<td style="text-align: left;">занять доступное пространство</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flex-none</code></td>
+<td style="text-align: left;">не растягиваться</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>gap-{size}</code></td>
+<td style="text-align: left;">отступы между элементами</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>order-{n}</code></td>
+<td style="text-align: left;">порядок элемента</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../layout/flexbox/">Flexbox</a></p>
+</blockquote>
+<hr />
+<h3 id="10-grid">🔲 10. Grid<a class="headerlink" href="#10-grid" title="Permanent link">&para;</a></h3>
+<p>Управляют grid-раскладкой.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">CSS</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>grid</code></td>
+<td style="text-align: left;"><code>display: grid</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grid-cols-{n}</code></td>
+<td style="text-align: left;">количество колонок (1-12)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grid-rows-{n}</code></td>
+<td style="text-align: left;">количество строк (1-6)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>col-span-{n}</code></td>
+<td style="text-align: left;">объединение колонок</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>row-span-{n}</code></td>
+<td style="text-align: left;">объединение строк</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>col-span-full</code></td>
+<td style="text-align: left;">на всю ширину</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>col-start-{n}</code></td>
+<td style="text-align: left;">начало колонки</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grid-flow-col</code></td>
+<td style="text-align: left;">заполнение по колонкам</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>grid-flow-dense</code></td>
+<td style="text-align: left;">заполнение пустот</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>gap-{size}</code></td>
+<td style="text-align: left;">отступы между элементами</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../layout/grid/">Grid</a></p>
+</blockquote>
+<hr />
+<h3 id="11-interactivity">🎯 11. Interactivity (Интерактивность)<a class="headerlink" href="#11-interactivity" title="Permanent link">&para;</a></h3>
+<p>Управляют поведением элементов при взаимодействии.</p>
+<h4 id="cursor">Cursor<a class="headerlink" href="#cursor" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">Вид курсора</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>cursor-pointer</code></td>
+<td style="text-align: left;">Указатель (ссылка)</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cursor-default</code></td>
+<td style="text-align: left;">Обычный</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cursor-not-allowed</code></td>
+<td style="text-align: left;">Запрещено</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cursor-wait</code></td>
+<td style="text-align: left;">Ожидание</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cursor-grab</code></td>
+<td style="text-align: left;">Захват</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>cursor-text</code></td>
+<td style="text-align: left;">Текст</td>
+</tr>
+</tbody>
+</table>
+<h4 id="user-select">User Select<a class="headerlink" href="#user-select" title="Permanent link">&para;</a></h4>
+<p><code>select-none</code>, <code>select-text</code>, <code>select-all</code>, <code>select-auto</code></p>
+<h4 id="pointer-events">Pointer Events<a class="headerlink" href="#pointer-events" title="Permanent link">&para;</a></h4>
+<p><code>pointer-events-none</code>, <code>pointer-events-auto</code></p>
+<h4 id="resize">Resize<a class="headerlink" href="#resize" title="Permanent link">&para;</a></h4>
+<p><code>resize-none</code>, <code>resize</code>, <code>resize-x</code>, <code>resize-y</code></p>
+<h4 id="appearance">Appearance<a class="headerlink" href="#appearance" title="Permanent link">&para;</a></h4>
+<p><code>appearance-none</code> (убирает стандартный вид элементов)</p>
+<hr />
+<h3 id="12-transitions">🔄 12. Transitions (Переходы)<a class="headerlink" href="#12-transitions" title="Permanent link">&para;</a></h3>
+<p>Управляют плавными переходами между состояниями.</p>
+<h4 id="transition-property">Transition Property<a class="headerlink" href="#transition-property" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">Что анимируется</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>transition</code></td>
+<td style="text-align: left;">Основные свойства</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>transition-all</code></td>
+<td style="text-align: left;">Все свойства</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>transition-colors</code></td>
+<td style="text-align: left;">Цвета</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>transition-opacity</code></td>
+<td style="text-align: left;">Прозрачность</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>transition-shadow</code></td>
+<td style="text-align: left;">Тени</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>transition-transform</code></td>
+<td style="text-align: left;">Трансформации</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>transition-none</code></td>
+<td style="text-align: left;">Без анимации</td>
+</tr>
+</tbody>
+</table>
+<h4 id="duration">Duration<a class="headerlink" href="#duration" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">Длительность</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>duration-75</code></td>
+<td style="text-align: left;">75ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>duration-100</code></td>
+<td style="text-align: left;">100ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>duration-150</code></td>
+<td style="text-align: left;">150ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>duration-200</code></td>
+<td style="text-align: left;">200ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>duration-300</code></td>
+<td style="text-align: left;">300ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>duration-500</code></td>
+<td style="text-align: left;">500ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>duration-700</code></td>
+<td style="text-align: left;">700ms</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>duration-1000</code></td>
+<td style="text-align: left;">1000ms</td>
+</tr>
+</tbody>
+</table>
+<h4 id="easing">Easing<a class="headerlink" href="#easing" title="Permanent link">&para;</a></h4>
+<p><code>ease-linear</code>, <code>ease-in</code>, <code>ease-out</code>, <code>ease-in-out</code></p>
+<hr />
+<h3 id="13-transforms">🔄 13. Transforms (Трансформации)<a class="headerlink" href="#13-transforms" title="Permanent link">&para;</a></h3>
+<p>Управляют трансформациями элементов.</p>
+<h4 id="scale">Scale (масштаб)<a class="headerlink" href="#scale" title="Permanent link">&para;</a></h4>
+<p><code>scale-0</code>, <code>scale-50</code>, <code>scale-75</code>, <code>scale-90</code>, <code>scale-95</code>, <code>scale-100</code>, <code>scale-105</code>, <code>scale-110</code>, <code>scale-125</code>, <code>scale-150</code></p>
+<h4 id="rotate">Rotate (поворот)<a class="headerlink" href="#rotate" title="Permanent link">&para;</a></h4>
+<p><code>rotate-0</code>, <code>rotate-1</code>, <code>rotate-2</code>, <code>rotate-3</code>, <code>rotate-6</code>, <code>rotate-12</code>, <code>rotate-45</code>, <code>rotate-90</code>, <code>rotate-180</code></p>
+<h4 id="translate">Translate (смещение)<a class="headerlink" href="#translate" title="Permanent link">&para;</a></h4>
+<p><code>translate-x-{size}</code>, <code>translate-y-{size}</code>, <code>translate-x-1/2</code>, <code>translate-y-1/2</code></p>
+<h4 id="origin">Origin (точка трансформации)<a class="headerlink" href="#origin" title="Permanent link">&para;</a></h4>
+<p><code>origin-center</code>, <code>origin-top</code>, <code>origin-bottom</code>, <code>origin-left</code>, <code>origin-right</code></p>
+<hr />
+<h3 id="14">🖱️ 14. Модификаторы состояний<a class="headerlink" href="#14" title="Permanent link">&para;</a></h3>
+<p>Добавляются <strong>перед</strong> утилитой через двоеточие:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Модификатор</th>
+<th style="text-align: left;">Когда применяется</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>hover:</code></td>
+<td style="text-align: left;">При наведении мыши</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>focus:</code></td>
+<td style="text-align: left;">При фокусе</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>focus-visible:</code></td>
+<td style="text-align: left;">При фокусе клавиатурой</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>focus-within:</code></td>
+<td style="text-align: left;">При фокусе дочернего элемента</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>active:</code></td>
+<td style="text-align: left;">При нажатии</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>disabled:</code></td>
+<td style="text-align: left;">Когда элемент disabled</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>visited:</code></td>
+<td style="text-align: left;">Для посещённых ссылок</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>first:</code></td>
+<td style="text-align: left;">Для первого элемента</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>last:</code></td>
+<td style="text-align: left;">Для последнего элемента</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>odd:</code></td>
+<td style="text-align: left;">Для нечётных элементов</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>even:</code></td>
+<td style="text-align: left;">Для чётных элементов</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>group-hover:</code></td>
+<td style="text-align: left;">При hover на родителе с <code>group</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>peer-checked:</code></td>
+<td style="text-align: left;">При checked предыдущего <code>peer</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responsive-">Responsive-модификаторы<a class="headerlink" href="#responsive-" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Модификатор</th>
+<th style="text-align: left;">Экран</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>sm:</code></td>
+<td style="text-align: left;">от 640px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>md:</code></td>
+<td style="text-align: left;">от 768px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>lg:</code></td>
+<td style="text-align: left;">от 1024px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>xl:</code></td>
+<td style="text-align: left;">от 1280px</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>2xl:</code></td>
+<td style="text-align: left;">от 1536px</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_15">Тема<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Модификатор</th>
+<th style="text-align: left;">Когда</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>dark:</code></td>
+<td style="text-align: left;">В тёмной теме</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📚 <strong>Подробнее:</strong> <a href="../../responsive/states/">Состояния</a>, <a href="../../responsive/breakpoints/">Breakpoints</a>, <a href="../../responsive/dark-mode/">Dark Mode</a></p>
+</blockquote>
+<hr />
+<h2 id="_16">🎨 Пример: сборка компонента из утилит<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>Посмотрим, как из отдельных утилит собирается реальный UI-элемент:</p>
+<h3 id="_17">Карточка товара<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="s">  bg-white</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s">  rounded-xl</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">  shadow-md</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s">  hover:shadow-lg</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s">  transition-shadow</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">  duration-300</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">  overflow-hidden</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">  max-w-sm</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s">&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>  <span class="p">&lt;</span><span class="nt">img</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="na">src</span><span class="o">=</span><span class="s">&quot;product.jpg&quot;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>    <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Товар&quot;</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="na">class</span><span class="o">=</span><span class="s">&quot;w-full h-48 object-cover&quot;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>  <span class="p">&gt;</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>  <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;p-6&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>    <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="s">      inline-block</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">      bg-blue-100</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="s">      text-blue-800</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="s">      text-xs</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="s">      font-semibold</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="s">      px-2</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="s">      py-1</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="s">      rounded-full</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="s">      mb-2</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="s">    &quot;</span><span class="p">&gt;</span>Новинка<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>    <span class="p">&lt;</span><span class="nt">h3</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-xl font-bold text-gray-900 mb-2&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>      Название товара
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>    <span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-gray-600 text-sm mb-4 line-clamp-2&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>      Описание товара с подробной информацией.
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;flex items-center justify-between&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;text-2xl font-bold text-gray-900&quot;</span><span class="p">&gt;</span>2 990 ₽<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="s">        bg-blue-600</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="s">        hover:bg-blue-700</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="s">        active:bg-blue-800</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="s">        text-white</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="s">        font-medium</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="s">        px-4</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="s">        py-2</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="s">        rounded-lg</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="s">        transition-colors</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="s">        duration-200</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="s">        focus:outline-none</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="s">        focus:ring-2</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="s">        focus:ring-blue-500</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="s">        focus:ring-offset-2</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="s">      &quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a>        В корзину
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a>      <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a>    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a>  <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="_18">Какие категории утилит использованы<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Утилита</th>
+<th style="text-align: left;">Категория</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>bg-white</code>, <code>bg-blue-100</code>, <code>bg-blue-600</code></td>
+<td style="text-align: left;">Colors / Backgrounds</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>rounded-xl</code>, <code>rounded-lg</code>, <code>rounded-full</code></td>
+<td style="text-align: left;">Borders</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>shadow-md</code>, <code>hover:shadow-lg</code></td>
+<td style="text-align: left;">Effects</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>transition-shadow</code>, <code>transition-colors</code>, <code>duration-300</code></td>
+<td style="text-align: left;">Transitions</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>overflow-hidden</code></td>
+<td style="text-align: left;">Layout</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>max-w-sm</code></td>
+<td style="text-align: left;">Sizing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>w-full</code>, <code>h-48</code></td>
+<td style="text-align: left;">Sizing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>object-cover</code></td>
+<td style="text-align: left;">Layout</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>p-6</code>, <code>px-2</code>, <code>py-1</code>, <code>px-4</code>, <code>py-2</code>, <code>mb-2</code>, <code>mb-4</code></td>
+<td style="text-align: left;">Spacing</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-xs</code>, <code>text-sm</code>, <code>text-xl</code>, <code>text-2xl</code></td>
+<td style="text-align: left;">Typography</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>font-semibold</code>, <code>font-bold</code>, <code>font-medium</code></td>
+<td style="text-align: left;">Typography</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>text-blue-800</code>, <code>text-gray-900</code>, <code>text-gray-600</code>, <code>text-white</code></td>
+<td style="text-align: left;">Colors</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>line-clamp-2</code></td>
+<td style="text-align: left;">Typography</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>inline-block</code></td>
+<td style="text-align: left;">Layout</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>flex</code>, <code>items-center</code>, <code>justify-between</code></td>
+<td style="text-align: left;">Flexbox</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>hover:bg-blue-700</code>, <code>active:bg-blue-800</code></td>
+<td style="text-align: left;">States</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>focus:outline-none</code>, <code>focus:ring-2</code>, <code>focus:ring-offset-2</code></td>
+<td style="text-align: left;">States / Borders</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_19">🗺️ Карта документации<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p>Используйте эту таблицу, чтобы быстро найти нужный раздел:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Что нужно сделать</th>
+<th style="text-align: left;">Раздел</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Выровнять элементы в ряд</td>
+<td style="text-align: left;"><a href="../../layout/flexbox/">Flexbox</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Создать сетку колонок</td>
+<td style="text-align: left;"><a href="../../layout/grid/">Grid</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Добавить отступы</td>
+<td style="text-align: left;"><a href="../../layout/spacing/">Отступы</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Задать размеры</td>
+<td style="text-align: left;"><a href="../../layout/sizing/">Размеры</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Покрасить текст/фон</td>
+<td style="text-align: left;"><a href="../../styling/colors/">Цвета</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Настроить шрифты</td>
+<td style="text-align: left;"><a href="../../styling/typography/">Типографика</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Добавить фоновое изображение</td>
+<td style="text-align: left;"><a href="../../styling/backgrounds/">Фоны</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Добавить границы/скругления</td>
+<td style="text-align: left;"><a href="../../styling/borders/">Границы</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Добавить тень/эффект</td>
+<td style="text-align: left;"><a href="../../styling/effects/">Эффекты</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Сделать адаптивный дизайн</td>
+<td style="text-align: left;"><a href="../../responsive/breakpoints/">Breakpoints</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Добавить тёмную тему</td>
+<td style="text-align: left;"><a href="../../responsive/dark-mode/">Dark Mode</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Добавить hover/focus-эффекты</td>
+<td style="text-align: left;"><a href="../../responsive/states/">Состояния</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Настроить свою тему</td>
+<td style="text-align: left;"><a href="../../advanced/customization/">Кастомизация</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Создать плагин</td>
+<td style="text-align: left;"><a href="../../advanced/plugins/">Плагины</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Использовать @apply, @layer</td>
+<td style="text-align: left;"><a href="../../advanced/directives/">Директивы</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">Оптимизировать CSS</td>
+<td style="text-align: left;"><a href="../../advanced/optimization/">Оптимизация</a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="_20">📊 Шпаргалка: самые используемые классы<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<h3 id="-20">Топ-20 классов, которые вы будете использовать постоянно<a class="headerlink" href="#-20" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">#</th>
+<th style="text-align: left;">Класс</th>
+<th style="text-align: left;">Применение</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;"><code>flex</code></td>
+<td style="text-align: left;">Включить flexbox</td>
+</tr>
+<tr>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;"><code>items-center</code></td>
+<td style="text-align: left;">Вертикальное центрирование</td>
+</tr>
+<tr>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;"><code>justify-between</code></td>
+<td style="text-align: left;">Распределение по краям</td>
+</tr>
+<tr>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;"><code>gap-4</code></td>
+<td style="text-align: left;">Отступы между элементами</td>
+</tr>
+<tr>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;"><code>p-4</code></td>
+<td style="text-align: left;">Внутренний отступ</td>
+</tr>
+<tr>
+<td style="text-align: left;">6</td>
+<td style="text-align: left;"><code>px-4 py-2</code></td>
+<td style="text-align: left;">Отступы для кнопок</td>
+</tr>
+<tr>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;"><code>rounded-lg</code></td>
+<td style="text-align: left;">Скругление углов</td>
+</tr>
+<tr>
+<td style="text-align: left;">8</td>
+<td style="text-align: left;"><code>bg-white</code></td>
+<td style="text-align: left;">Белый фон</td>
+</tr>
+<tr>
+<td style="text-align: left;">9</td>
+<td style="text-align: left;"><code>text-gray-900</code></td>
+<td style="text-align: left;">Тёмный текст</td>
+</tr>
+<tr>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;"><code>text-sm</code></td>
+<td style="text-align: left;">Маленький текст</td>
+</tr>
+<tr>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;"><code>font-bold</code></td>
+<td style="text-align: left;">Жирный текст</td>
+</tr>
+<tr>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;"><code>w-full</code></td>
+<td style="text-align: left;">На всю ширину</td>
+</tr>
+<tr>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;"><code>hidden md:block</code></td>
+<td style="text-align: left;">Скрыть на мобильных</td>
+</tr>
+<tr>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;"><code>hover:bg-blue-600</code></td>
+<td style="text-align: left;">Hover-эффект</td>
+</tr>
+<tr>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;"><code>transition</code></td>
+<td style="text-align: left;">Плавный переход</td>
+</tr>
+<tr>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;"><code>shadow-md</code></td>
+<td style="text-align: left;">Средняя тень</td>
+</tr>
+<tr>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;"><code>max-w-7xl mx-auto</code></td>
+<td style="text-align: left;">Контейнер по центру</td>
+</tr>
+<tr>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;"><code>grid grid-cols-3</code></td>
+<td style="text-align: left;">Сетка из 3 колонок</td>
+</tr>
+<tr>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;"><code>border border-gray-200</code></td>
+<td style="text-align: left;">Тонкая граница</td>
+</tr>
+<tr>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;"><code>focus:ring-2 focus:ring-blue-500</code></td>
+<td style="text-align: left;">Focus-обводка</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_21">🚫 Частые ошибки<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<h3 id="1">❌ Ошибка 1: Поиск «волшебного» класса<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="cm">&lt;!-- ❌ Плохо: нет класса &quot;card&quot; в Tailwind --&gt;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;card&quot;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="cm">&lt;!-- ✅ Хорошо: собираем из утилит --&gt;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-white rounded-lg shadow-md p-6&quot;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="2">❌ Ошибка 2: Слишком много классов в одном элементе<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="cm">&lt;!-- ❌ Плохо: нечитаемо --&gt;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-white font-medium px-4 py-2 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="cm">&lt;!-- ✅ Хорошо: вынести в компонент (React/Vue) --&gt;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="p">&lt;</span><span class="nt">Button</span> <span class="na">variant</span><span class="o">=</span><span class="s">&quot;primary&quot;</span> <span class="na">size</span><span class="o">=</span><span class="s">&quot;md&quot;</span><span class="p">&gt;</span>Текст<span class="p">&lt;/</span><span class="nt">Button</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="3">❌ Ошибка 3: Забывают, что классы комбинируются<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="cm">&lt;!-- ❌ Плохо: два конфликтующих класса --&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;p-4 p-8&quot;</span><span class="p">&gt;</span>Непонятно, какой применится<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="cm">&lt;!-- ✅ Хорошо: один класс --&gt;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;p-8&quot;</span><span class="p">&gt;</span>Понятно<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="4">❌ Ошибка 4: Изобретение своих имён вместо утилит<a class="headerlink" href="#4" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c">/* ❌ Плохо: писать CSS вручную */</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="p">.</span><span class="nc">my-button</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="k">background-color</span><span class="p">:</span><span class="w"> </span><span class="mh">#3b82f6</span><span class="p">;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="kc">white</span><span class="p">;</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="w"> </span><span class="mi">1</span><span class="kt">rem</span><span class="p">;</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="k">border-radius</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="p">}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="cm">&lt;!-- ✅ Хорошо: использовать утилиты --&gt;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-blue-500 text-white px-4 py-2 rounded-lg&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  Кнопка
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+<h3 id="5">❌ Ошибка 5: Забывают про модификаторы<a class="headerlink" href="#5" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="cm">&lt;!-- ❌ Плохо: кнопка не реагирует на hover --&gt;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-blue-500 text-white px-4 py-2 rounded&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>  Нет hover-эффекта
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="cm">&lt;!-- ✅ Хорошо: добавляем hover --&gt;</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition-colors&quot;</span><span class="p">&gt;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>  Плавный hover-эффект
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+</code></pre></div>
+<h2 id="_22">🎯 Что дальше?<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<p>Теперь у вас есть <strong>полная карта</strong> всех утилитарных классов Tailwind CSS! Вы знаете:</p>
+<ul>
+<li>📂 Какие категории утилит существуют</li>
+<li>🔍 Где искать детали по каждой теме</li>
+<li>🧩 Как комбинировать утилиты в реальные компоненты</li>
+<li>⚡ Какие классы используются чаще всего</li>
+</ul>
+<p><strong>Поздравляем! Вы завершили секцию «Основы»!</strong> 🎉</p>
+<h3 id="basics">Что вы изучили в секции Basics<a class="headerlink" href="#basics" title="Permanent link">&para;</a></h3>
+<ul>
+<li>📘 <strong>Введение</strong> — философия utility-first</li>
+<li>📦 <strong>Установка</strong> — как подключить Tailwind</li>
+<li>⚙️ <strong>Конфигурация</strong> — как настроить <code>tailwind.config.js</code></li>
+<li>🎨 <strong>Утилитарные классы</strong> — обзор всех категорий</li>
+</ul>
+<h3 id="_23">Следующий шаг<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>Теперь вы готовы к созданию реальных макетов!</p>
+<p><strong>Следующая секция:</strong> <a href="../../layout/flexbox/">📐 Макет → Flexbox</a></p>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 DaniilGavrin
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/DaniilGavrin" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u0421\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d\u043e \u0432 \u0431\u0443\u0444\u0435\u0440", "clipboard.copy": "\u041a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u0442\u044c \u0432 \u0431\u0443\u0444\u0435\u0440", "search.result.more.one": "\u0415\u0449\u0451 1 \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.more.other": "\u0415\u0449\u0451 # \u043d\u0430 \u044d\u0442\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435", "search.result.none": "\u0421\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439 \u043d\u0435 \u043d\u0430\u0439\u0434\u0435\u043d\u043e", "search.result.one": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e 1 \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0435", "search.result.other": "\u041d\u0430\u0439\u0434\u0435\u043d\u043e \u0441\u043e\u0432\u043f\u0430\u0434\u0435\u043d\u0438\u0439: #", "search.result.placeholder": "\u041d\u0430\u0447\u043d\u0438\u0442\u0435 \u043f\u0435\u0447\u0430\u0442\u0430\u0442\u044c \u0434\u043b\u044f \u043f\u043e\u0438\u0441\u043a\u0430", "search.result.term.missing": "\u041e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0443\u0435\u0442", "select.version": "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0432\u0435\u0440\u0441\u0438\u044e"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
